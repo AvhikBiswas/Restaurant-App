@@ -1,14 +1,9 @@
 import React, {useState} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import RestaurantItem from '../components/ResturantCard';
+import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
+import Header from '../components/Header';
+import SectionTitle from '../components/SectionTitle';
+import RestaurantList from '../components/RestaurantList';
+import SearchBar from '../components/SearchBar';
 
 const HomeScreen = () => {
   const [searchText, setSearchText] = useState('');
@@ -18,7 +13,7 @@ const HomeScreen = () => {
     console.log('Searched text:', searchText);
   };
 
-  const handleSectionChange = (section: any) => {
+  const handleSectionChange = (section: string) => {
     setSelectedSection(section);
   };
 
@@ -55,61 +50,22 @@ const HomeScreen = () => {
     },
     // Add more restaurants as needed
   ];
-
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.greetingText}>Good Morning</Text>
-        <Text style={styles.nameText}>Mr.Joe!</Text>
-      </View>
+      <Header />
       <View style={styles.searchContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Search..."
-          onChangeText={setSearchText}
-          value={searchText}
-          onSubmitEditing={handleSearch}
+        <SearchBar
+          searchText={searchText}
+          setSearchText={setSearchText}
+          handleSearch={handleSearch}
         />
       </View>
-      <View style={styles.section}>
-        <TouchableOpacity onPress={() => handleSectionChange('Restaurant')}>
-          <Text
-            style={[
-              styles.heroTitle,
-              selectedSection === 'Restaurant' && styles.selected,
-            ]}>
-            Restaurant
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleSectionChange('Cooking')}>
-          <Text
-            style={[
-              styles.heroTitle,
-              selectedSection === 'Cooking' && styles.selected,
-            ]}>
-            Cooking
-          </Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.HeroBar} />
-      <View style={styles.section}>
-        <View style={styles.CartSection}>
-          <Text style={styles.sectionTitle}>Satisfy Your Cravings</Text>
-          <Text style={styles.sectionText}>
-            Restaurants that suit your palate
-          </Text>
-        </View>
-        <TouchableOpacity style={styles.viewAllButton}>
-          <Text style={styles.viewAllText}>View All</Text>
-        </TouchableOpacity>
-      </View>
-      <ScrollView
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.scrollViewContent}>
-        {restaurants.map(restaurant => (
-          <RestaurantItem key={restaurant.id} restaurant={restaurant} />
-        ))}
+      <SectionTitle
+        selectedSection={selectedSection}
+        handleSectionChange={handleSectionChange}
+      />
+      <ScrollView showsVerticalScrollIndicator={false} style={{width:"100%",height:"100%"}}>
+        <RestaurantList restaurants={restaurants}  />
       </ScrollView>
     </SafeAreaView>
   );
@@ -121,75 +77,8 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#f0f0f0',
   },
-  header: {
-    marginBottom: 20,
-    marginTop: 30,
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-  },
-  greetingText: {
-    fontSize: 20,
-    color: 'black',
-  },
-  nameText: {
-    fontSize: 20,
-    color: 'black',
-  },
-  HeroBar: {
-    width: '40%',
-    height: 5,
-    borderTopLeftRadius: 50,
-    backgroundColor: 'black',
-    marginBottom: 10,
-  },
   searchContainer: {
     marginBottom: 20,
-  },
-  input: {
-    height: 50,
-    borderColor: 'gray',
-    borderWidth: 1,
-    borderRadius: 12,
-    paddingHorizontal: 10,
-  },
-  section: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  CartSection: {
-    flex: 1,
-    paddingLeft: 10,
-    flexDirection: 'column',
-  },
-  sectionTitle: {
-    fontSize: 20,
-    paddingLeft: 10,
-    paddingRight: 10,
-    color: 'black',
-  },
-  sectionText: {
-    fontSize: 16,
-    paddingLeft: 10,
-  },
-  viewAllButton: {
-    padding: 10,
-    alignSelf: 'flex-start',
-  },
-  viewAllText: {
-    color: 'black',
-  },
-  scrollViewContent: {
-    // paddingBottom: 10,
-  },
-  heroTitle: {
-    fontSize: 20,
-    color: 'black',
-    paddingLeft:10,
-    
-  },
-  selected: {
-    fontWeight: 'bold',
-    color: 'black',
   },
 });
 
