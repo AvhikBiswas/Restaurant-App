@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import RestaurantItem from './ResturantCard';
+import { useNavigation } from '@react-navigation/native';
 
 interface Restaurant {
   id: number;
@@ -17,6 +18,11 @@ interface Props {
 }
 
 const RestaurantList: React.FC<Props> = ({ restaurants }) => {
+
+
+  const navigation:any = useNavigation();
+
+
   return (
     <View style={{paddingLeft: 20, paddingBottom: 20, backgroundColor: 'white', borderTopStartRadius: 20, borderBottomStartRadius: 20,marginBottom:30}}>
       <View style={styles.section}>
@@ -27,7 +33,7 @@ const RestaurantList: React.FC<Props> = ({ restaurants }) => {
           </Text>
         </View>
         <TouchableOpacity style={styles.viewAllButton}>
-          <Text style={styles.viewAllText}>View All</Text>
+          <Text style={styles.viewAllText} onPress={()=>navigation.navigate("ViewAll")}>View All</Text>
         </TouchableOpacity>
       </View>
       <View style={{marginTop: 10}}>
