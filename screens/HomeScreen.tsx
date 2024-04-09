@@ -66,6 +66,7 @@ const HomeScreen = () => {
       />
       <ScrollView showsVerticalScrollIndicator={false} style={{width:"100%",height:"100%"}}>
         <RestaurantList restaurants={restaurants}  />
+        <RestaurantList restaurants={restaurants}  />
       </ScrollView>
     </SafeAreaView>
   );

@@ -18,7 +18,7 @@ interface Props {
 
 const RestaurantList: React.FC<Props> = ({ restaurants }) => {
   return (
-    <View style={{paddingLeft: 20, paddingBottom: 20, backgroundColor: 'white', borderTopStartRadius: 20, borderBottomStartRadius: 20}}>
+    <View style={{paddingLeft: 20, paddingBottom: 20, backgroundColor: 'white', borderTopStartRadius: 20, borderBottomStartRadius: 20,marginBottom:30}}>
       <View style={styles.section}>
         <View style={styles.CartSection}>
           <Text style={styles.sectionTitle}>Satisfy Your Cravings</Text>

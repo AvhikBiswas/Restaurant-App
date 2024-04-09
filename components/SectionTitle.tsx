@@ -7,7 +7,7 @@ interface Props {
 }
 
 const SectionTitle: React.FC<Props> = ({ selectedSection, handleSectionChange }) => {
-  const screenWidth = Dimensions.get('window').width;
+  const screenWidth = Dimensions.get('screen').width;
   const buttonWidth = screenWidth / 2;
 
   return (
@@ -19,7 +19,7 @@ const SectionTitle: React.FC<Props> = ({ selectedSection, handleSectionChange })
         <Text
           style={[
             styles.heroTitle,
-            selectedSection === 'Restaurant' && styles.selected,
+            selectedSection === 'Restaurant' && styles.selectedHeroTitle,
           ]}
         >
           Restaurant
@@ -28,13 +28,13 @@ const SectionTitle: React.FC<Props> = ({ selectedSection, handleSectionChange })
       </TouchableOpacity>
 
       <TouchableOpacity
-        style={[styles.buttonContainer, { width: buttonWidth, paddingRight: 10 }]} // Add paddingRight for the Cooking section
+        style={[styles.buttonContainer, { width: buttonWidth, paddingRight: 10 }]} 
         onPress={() => handleSectionChange('Cooking')}
       >
         <Text
           style={[
             styles.heroTitle,
-            selectedSection === 'Cooking' && styles.selected,
+            selectedSection === 'Cooking' && styles.selectedHeroTitle,
           ]}
         >
           Cooking
@@ -47,29 +47,31 @@ const SectionTitle: React.FC<Props> = ({ selectedSection, handleSectionChange })
 
 const styles = StyleSheet.create({
   container: {
+    marginBottom:1,
     flexDirection: 'row',
   },
   buttonContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    height: 40, // Adjust as needed
+    height: 40,
   },
   heroTitle: {
     fontSize: 25,
     color: 'black',
   },
-  selected: {
+  selectedHeroTitle: {
     fontWeight: 'bold',
   },
   barLeft: {
-    height: 5,
+    height: 4,
     borderTopLeftRadius: 50,
     borderBottomLeftRadius: 50,
     width: '100%',
     backgroundColor: 'black',
   },
   barRight:{
-    height: 5,
+   marginRight:10,
+    height: 4,
     borderTopRightRadius: 50,
     borderBottomRightRadius: 50,
     width: '100%',
