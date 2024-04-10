@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {
   TextInput,
@@ -7,7 +8,7 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome'; // Import the FontAwesome icon set
+import Icon from 'react-native-vector-icons/FontAwesome'; 
 
 interface Props {
   searchText: string;
@@ -19,7 +20,9 @@ const SearchBar: React.FC<Props> = ({
   searchText,
   setSearchText,
   handleSearch,
-}) => {
+}) =>
+   {
+    const navigation:any=useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.searchContainer}>
@@ -32,7 +35,7 @@ const SearchBar: React.FC<Props> = ({
           onSubmitEditing={handleSearch}
         />
         <TouchableOpacity>
-          <Icon name="filter" size={20} color="black" style={styles.icon} />
+          <Icon name="filter"  onPress={() => navigation.navigate('Filter')} size={20} color="black" style={styles.icon} />
         </TouchableOpacity>
       </View>
     </View>

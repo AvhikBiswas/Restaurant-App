@@ -8,7 +8,7 @@ export default function ViewAllScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView
-        showsVerticalScrollIndicator={true}
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollViewContent}>
         <VerticalView restaurants={restaurants} />
       </ScrollView>

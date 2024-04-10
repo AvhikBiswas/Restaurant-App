@@ -42,7 +42,7 @@ const RestaurantList: React.FC<Props> = ({ restaurants }) => {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.scrollViewContent}>
           {restaurants.map((restaurant: Restaurant) => (
-            <RestaurantItem key={restaurant.id} restaurant={restaurant} />
+            <RestaurantItem key={restaurant.id} restaurant={restaurant} isVertical={false} />
           ))}
         </ScrollView>
       </View>

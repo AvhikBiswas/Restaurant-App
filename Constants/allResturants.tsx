@@ -49,6 +49,18 @@ const restaurants = [
       image:
         'https://static.toiimg.com/thumb/resizemode-4,width-1280,height-720,msid-101282760/101282760.jpg', // Use actual image URLs here
     },
+    {
+      id: 7,
+      name: 'Billu Da Dhaba',
+      Location: 'French Quarter',
+      type: 'Non-Veg',
+      FoodType: 'Cafe',
+      cuisine: 'India',
+      image:
+        'https://static.toiimg.com/thumb/resizemode-4,width-1280,height-720,msid-101282760/101282760.jpg', // Use actual image URLs here
+    },
+    
+    
     
   ];
 
