@@ -1,12 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { StyleSheet, ScrollView, SafeAreaView } from 'react-native';
+import RestaurantList from '../components/RestaurantList';
+import restaurants from '../Constants/allResturants';
+import VerticalView from '../components/VerticalView';
 
 export default function ViewAllScreen() {
   return (
-    <View>
-      <Text>ViewAllScreen</Text>
-    </View>
-  )
+    <SafeAreaView style={styles.container}>
+      <ScrollView
+        showsVerticalScrollIndicator={true}
+        contentContainerStyle={styles.scrollViewContent}>
+        <VerticalView restaurants={restaurants} />
+      </ScrollView>
+    </SafeAreaView>
+  );
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  scrollViewContent: {
+    flexGrow: 1,
+  },
+});

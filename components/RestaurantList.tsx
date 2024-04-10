@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   },
   viewAllButton: {
     padding: 10,
-    alignSelf: 'flex-end', // Align button to the end of the row
+    alignSelf: 'flex-end',
   },
   viewAllText: {
     fontSize: 17,
